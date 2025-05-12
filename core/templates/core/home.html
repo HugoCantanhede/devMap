@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="text-center">
+        <h1 class="mb-4">Bem-vindo ao DevMap</h1>
+        <p class="lead mb-4">Mapeie e gerencie suas habilidades de desenvolvimento</p>
+        
+        {% if user.is_authenticated %}
+            <div class="mt-4">
+                <a href="{% url 'minhas_habilidades' %}" class="btn btn-primary btn-lg">
+                    Minhas Habilidades
+                </a>
+                <a href="{% url 'adicionar_habilidade' %}" class="btn btn-success btn-lg">
+                    Adicionar Habilidade
+                </a>
+            </div>
+        {% else %}
+            <div class="mt-4">
+                <a href="{% url 'account_login' %}" class="btn btn-primary btn-lg">
+                    Entrar com Google
+                </a>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

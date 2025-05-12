@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Minhas Habilidades</h2>
+
+{% if habilidades_por_categoria %}
+  {% for categoria, habilidades in habilidades_por_categoria.items %}
+    <h3>{{ categoria }}</h3>
+    <ul>
+      {% for habilidade_usuario in habilidades %}
+        <li>
+          {{ habilidade_usuario.habilidade.nome }} — {{ habilidade_usuario.get_nivel_display }}
+        </li>
+      {% endfor %}
+    </ul>
+  {% endfor %}
+{% else %}
+  <p>Você ainda não cadastrou nenhuma habilidade.</p>
+{% endif %}
+
+{% endblock %}
